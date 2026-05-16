@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 應用規劃師 ｜ 考前最後衝刺 Notebook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --paper: #f4ece0;
+    --paper-dark: #ebe0cc;
+    --ink: #1a1a1a;
+    --ink-soft: #3a3a3a;
+    --red: #d62828;
+    --red-soft: #f4a8a8;
+    --yellow: #ffd54f;
+    --highlight: #fff066;
+    --blue: #1d3557;
+    --blue-soft: #a8dadc;
+    --green: #2a9d8f;
+    --orange: #e76f51;
+    --rule: rgba(26,26,26,0.08);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background: var(--paper);
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(255,255,255,0.4) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(255,200,150,0.15) 0%, transparent 50%);
+    color: var(--ink);
+    line-height: 1.65;
+    padding: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* 紙張紋理 */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.5;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 32px 80px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ============ HEADER ============ */
+  header {
+    border-bottom: 3px solid var(--ink);
+    padding-bottom: 28px;
+    margin-bottom: 48px;
+    position: relative;
+  }
+
+  .top-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+  }
+
+  .stamp {
+    display: inline-block;
+    border: 2px solid var(--red);
+    color: var(--red);
+    padding: 4px 12px;
+    transform: rotate(-3deg);
+    font-weight: 700;
+    letter-spacing: 0.15em;
+  }
+
+  h1 {
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 900;
+    font-size: clamp(36px, 6vw, 64px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+
+  h1 .red { color: var(--red); }
+
+  .subtitle {
+    font-family: 'Caveat', cursive;
+    font-size: 28px;
+    color: var(--red);
+    transform: rotate(-1deg);
+    display: inline-block;
+    margin-top: 8px;
+  }
+
+  .meta-row {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-top: 24px;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+
+  .meta-row span strong { color: var(--ink); }
+
+  /* ============ SECTION ============ */
+  section { margin-bottom: 72px; scroll-margin-top: 24px; }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 28px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed var(--ink);
+  }
+
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--red);
+    letter-spacing: 0.1em;
+  }
+
+  h2 {
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 900;
+    font-size: 32px;
+    letter-spacing: -0.01em;
+    flex: 1;
+  }
+
+  .section-note {
+    font-family: 'Caveat', cursive;
+    font-size: 22px;
+    color: var(--red);
+    transform: rotate(-1deg);
+  }
+
+  h3 {
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 700;
+    font-size: 22px;
+    margin: 32px 0 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  h3::before {
+    content: '';
+    width: 6px;
+    height: 24px;
+    background: var(--ink);
+    display: inline-block;
+  }
+
+  /* ============ 30 秒速記 ============ */
+  .golden-box {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 36px 40px;
+    border-radius: 4px;
+    position: relative;
+    box-shadow: 8px 8px 0 var(--red);
+  }
+
+  .golden-box::before {
+    content: '★';
+    position: absolute;
+    top: -16px;
+    right: 24px;
+    font-size: 40px;
+    color: var(--yellow);
+    text-shadow: 2px 2px 0 var(--ink);
+  }
+
+  .golden-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    color: var(--yellow);
+    margin-bottom: 8px;
+  }
+
+  .golden-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 28px;
+    font-weight: 900;
+    margin-bottom: 24px;
+  }
+
+  .golden-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px 32px;
+    list-style: none;
+  }
+
+  .golden-list li {
+    font-size: 16px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+
+  .golden-list li strong {
+    color: var(--yellow);
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 700;
+    min-width: 110px;
+  }
+
+  /* ============ TOC ============ */
+  .toc {
+    background: var(--paper-dark);
+    border: 2px solid var(--ink);
+    padding: 24px 28px;
+    margin-bottom: 48px;
+  }
+
+  .toc-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    margin-bottom: 12px;
+    color: var(--ink-soft);
+  }
+
+  .toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 8px 24px;
+    list-style: none;
+  }
+
+  .toc-grid a {
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 14px;
+    padding: 4px 0;
+    border-bottom: 1px dotted transparent;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .toc-grid a::before {
+    content: attr(data-num);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--red);
+    font-weight: 700;
+  }
+
+  .toc-grid a:hover {
+    border-bottom-color: var(--ink);
+    transform: translateX(2px);
+  }
+
+  /* ============ 翻牌 ============ */
+  .flip-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 16px;
+  }
+
+  .flip-card {
+    perspective: 1000px;
+    height: 130px;
+    cursor: pointer;
+  }
+
+  .flip-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+  }
+
+  .flip-card.flipped .flip-inner { transform: rotateY(180deg); }
+
+  .flip-front, .flip-back {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    text-align: center;
+    border-radius: 4px;
+  }
+
+  .flip-front {
+    background: var(--paper-dark);
+    border: 2px solid var(--ink);
+    box-shadow: 4px 4px 0 var(--ink);
+  }
+
+  .flip-back {
+    background: var(--red);
+    color: var(--paper);
+    transform: rotateY(180deg);
+    box-shadow: 4px 4px 0 var(--ink);
+  }
+
+  .flip-q {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+
+  .flip-num {
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--red);
+    font-weight: 700;
+  }
+
+  .flip-back .flip-num { color: var(--yellow); }
+
+  .flip-a {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: 0.02em;
+    line-height: 1.3;
+  }
+
+  .flip-hint {
+    font-family: 'Caveat', cursive;
+    font-size: 18px;
+    color: var(--red);
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  /* ============ 表格 ============ */
+  .table-wrap {
+    overflow-x: auto;
+    margin: 16px 0;
+    border: 2px solid var(--ink);
+    background: rgba(255,255,255,0.4);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+  }
+
+  th, td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  th {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.05em;
+  }
+
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(255, 240, 102, 0.3); }
+
+  td strong { color: var(--red); }
+
+  .highlight-text {
+    background: linear-gradient(180deg, transparent 55%, var(--highlight) 55%);
+    padding: 0 2px;
+    font-weight: 700;
+  }
+
+  /* ============ 對比卡 ============ */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .compare-card {
+    background: rgba(255,255,255,0.4);
+    border: 2px solid var(--ink);
+    padding: 20px 24px;
+    border-radius: 4px;
+    position: relative;
+    box-shadow: 4px 4px 0 var(--ink);
+  }
+
+  .compare-card.red-accent { border-color: var(--red); }
+  .compare-card.red-accent::after {
+    content: '!';
+    position: absolute;
+    top: -14px;
+    right: 16px;
+    background: var(--red);
+    color: var(--paper);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 900;
+    font-size: 18px;
+    box-shadow: 2px 2px 0 var(--ink);
+  }
+
+  .compare-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 20px;
+    font-weight: 900;
+    margin-bottom: 4px;
+  }
+
+  .compare-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--red);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+
+  .compare-desc {
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed var(--rule);
+  }
+
+  .compare-list { list-style: none; font-size: 14px; }
+  .compare-list li {
+    padding: 4px 0;
+    display: flex;
+    gap: 8px;
+  }
+  .compare-list li::before {
+    content: '▸';
+    color: var(--red);
+    font-weight: 700;
+  }
+
+  /* ============ 易混淆對照 ============ */
+  .confuse-card {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 0;
+    margin: 20px 0;
+    background: rgba(255,255,255,0.4);
+    border: 2px solid var(--ink);
+    box-shadow: 4px 4px 0 var(--ink);
+    overflow: hidden;
+  }
+
+  .confuse-side {
+    padding: 20px 24px;
+  }
+
+  .confuse-side.left { border-right: 1px dashed var(--ink); }
+
+  .confuse-vs {
+    background: var(--ink);
+    color: var(--yellow);
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 900;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 12px;
+    letter-spacing: 0.05em;
+  }
+
+  .confuse-name {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 19px;
+    font-weight: 900;
+    color: var(--red);
+    margin-bottom: 6px;
+  }
+
+  .confuse-key {
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+
+  .confuse-key strong { color: var(--ink); }
+
+  /* ============ 速查 grid ============ */
+  .quick-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+  }
+
+  .quick-item {
+    background: rgba(255,255,255,0.5);
+    border-left: 4px solid var(--red);
+    padding: 14px 18px;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .quick-item .q-name {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .quick-item .q-desc {
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+
+  .quick-item.blue { border-left-color: var(--blue); }
+  .quick-item.green { border-left-color: var(--green); }
+  .quick-item.orange { border-left-color: var(--orange); }
+
+  /* ============ Memo 區塊 ============ */
+  .memo {
+    background: var(--highlight);
+    padding: 16px 22px;
+    margin: 16px 0;
+    border-left: 6px solid var(--ink);
+    font-family: 'Caveat', cursive;
+    font-size: 22px;
+    color: var(--ink);
+    line-height: 1.4;
+    transform: rotate(-0.5deg);
+    box-shadow: 3px 3px 0 rgba(26,26,26,0.15);
+  }
+
+  .memo strong { color: var(--red); font-weight: 700; }
+
+  /* ============ Footer ============ */
+  footer {
+    margin-top: 80px;
+    padding: 40px 32px;
+    background: var(--ink);
+    color: var(--paper);
+    text-align: center;
+    border-radius: 4px;
+    position: relative;
+  }
+
+  .footer-stamp {
+    display: inline-block;
+    border: 3px solid var(--yellow);
+    color: var(--yellow);
+    padding: 8px 24px;
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 900;
+    font-size: 24px;
+    letter-spacing: 0.2em;
+    transform: rotate(-2deg);
+    margin-bottom: 20px;
+  }
+
+  .footer-msg {
+    font-family: 'Caveat', cursive;
+    font-size: 32px;
+    color: var(--yellow);
+    line-height: 1.3;
+  }
+
+  .footer-sign {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    margin-top: 20px;
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* ============ Print ============ */
+  @media print {
+    body { background: white; }
+    body::before { display: none; }
+    .flip-card { height: auto; }
+    .flip-inner { transform: none !important; }
+    .flip-back {
+      position: relative;
+      transform: none;
+      margin-top: 8px;
+      page-break-inside: avoid;
+    }
+    .flip-front { position: relative; }
+    section { page-break-inside: avoid; }
+  }
+
+  /* ============ 響應式（平板以下 ≤768px） ============ */
+  @media (max-width: 768px) {
+    .container { padding: 28px 20px 60px; }
+    section { margin-bottom: 56px; }
+    .section-head { flex-wrap: wrap; gap: 8px 12px; margin-bottom: 20px; }
+    .section-note { width: 100%; margin-top: -4px; }
+    h2 { font-size: 26px; }
+    h3 { font-size: 19px; margin: 24px 0 12px; }
+    h3::before { width: 5px; height: 20px; }
+  }
+
+  /* ============ 響應式（手機 ≤640px） ============ */
+  @media (max-width: 640px) {
+    .container { padding: 24px 16px 56px; }
+
+    /* Header */
+    h1 { font-size: 32px; line-height: 1.1; }
+    .subtitle { font-size: 22px; }
+    .top-line { font-size: 10px; letter-spacing: 0.15em; }
+    .stamp { padding: 3px 9px; font-size: 10px; }
+    .meta-row { gap: 8px 16px; margin-top: 16px; font-size: 12px; }
+
+    /* Sections */
+    section { margin-bottom: 44px; }
+    h2 { font-size: 22px; }
+    h3 { font-size: 18px; }
+
+    /* TOC */
+    .toc { padding: 18px 18px; margin-bottom: 36px; }
+    .toc-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 6px 16px; }
+    .toc-grid a { font-size: 13px; }
+
+    /* Golden box */
+    .golden-box { padding: 24px 20px; box-shadow: 5px 5px 0 var(--red); }
+    .golden-box::before { font-size: 32px; top: -12px; right: 16px; }
+    .golden-label { font-size: 11px; letter-spacing: 0.2em; }
+    .golden-title { font-size: 22px; margin-bottom: 16px; }
+    .golden-list { grid-template-columns: 1fr; gap: 4px 0; }
+    .golden-list li { font-size: 15px; gap: 8px; }
+    .golden-list li strong { min-width: 90px; font-size: 15px; }
+
+    /* Flip cards */
+    .flip-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .flip-card { height: 120px; }
+    .flip-front, .flip-back { padding: 12px 10px; box-shadow: 3px 3px 0 var(--ink); }
+    .flip-q { font-size: 13px; }
+    .flip-a { font-size: 15px; }
+    .flip-hint { font-size: 16px; margin-bottom: 12px; }
+
+    /* Tables */
+    table { font-size: 13px; }
+    th, td { padding: 8px 10px; }
+    th { font-size: 12px; }
+
+    /* Compare / quick / memo cards */
+    .compare-grid { gap: 14px; }
+    .compare-card { padding: 16px 18px; box-shadow: 3px 3px 0 var(--ink); }
+    .compare-title { font-size: 18px; }
+    .quick-grid { grid-template-columns: 1fr; gap: 10px; }
+    .quick-item { padding: 12px 14px; }
+    .memo { padding: 14px 16px; font-size: 18px; }
+
+    /* Confuse card → 上下堆疊 */
+    .confuse-card { grid-template-columns: 1fr; box-shadow: 3px 3px 0 var(--ink); }
+    .confuse-side { padding: 16px 18px; }
+    .confuse-side.left { border-right: none; border-bottom: 1px dashed var(--ink); }
+    .confuse-vs { padding: 6px; font-size: 16px; }
+    .confuse-name { font-size: 17px; }
+
+    /* Footer */
+    footer { margin-top: 56px; padding: 32px 20px; }
+    .footer-stamp { font-size: 18px; padding: 6px 18px; letter-spacing: 0.15em; margin-bottom: 14px; }
+    .footer-msg { font-size: 22px; }
+    .footer-sign { font-size: 10px; letter-spacing: 0.2em; }
+  }
+
+  /* ============ 響應式（小手機 ≤380px） ============ */
+  @media (max-width: 380px) {
+    .container { padding: 20px 14px 48px; }
+    h1 { font-size: 28px; }
+    .flip-grid { grid-template-columns: 1fr; }
+    .flip-card { height: 100px; }
+    .meta-row { font-size: 11px; }
+    .toc-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ============ HEADER ============ -->
+  <header>
+    <div class="top-line">
+      <span>EXAM SPRINT NOTEBOOK / VOL.01</span>
+      <span class="stamp">FINAL REVIEW</span>
+    </div>
+    <h1>AI 應用規劃師<br><span class="red">考前最後衝刺</span></h1>
+    <div class="subtitle">— 進考場前看這份就夠了 —</div>
+    <div class="meta-row">
+      <span><strong>📚 範圍</strong>　20 章核心</span>
+      <span><strong>⏱ 速讀</strong>　30 分鐘掃完</span>
+      <span><strong>🎯 重點</strong>　超高頻 15 題＋易混淆對照</span>
+      <span><strong>💡 互動</strong>　點翻牌測試自己</span>
+    </div>
+  </header>
+
+  <!-- ============ TOC ============ -->
+  <nav class="toc">
+    <div class="toc-title">★ 目錄 ／ TABLE OF CONTENTS</div>
+    <ul class="toc-grid">
+      <li><a href="#golden" data-num="01">黃金 30 秒速記</a></li>
+      <li><a href="#flip" data-num="02">必背 15 題翻牌</a></li>
+      <li><a href="#confuse" data-num="03">最易混淆對照</a></li>
+      <li><a href="#activation" data-num="04">激活函數速查</a></li>
+      <li><a href="#metrics" data-num="05">模型評估指標</a></li>
+      <li><a href="#arch" data-num="06">模型架構對比</a></li>
+      <li><a href="#agent" data-num="07">Agent ／ RAG</a></li>
+      <li><a href="#prompt" data-num="08">Prompt ／ 微調</a></li>
+      <li><a href="#data" data-num="09">資料工程</a></li>
+      <li><a href="#xai" data-num="10">XAI 解釋性</a></li>
+      <li><a href="#safety" data-num="11">AI 安全治理</a></li>
+      <li><a href="#final" data-num="12">最後一句話</a></li>
+    </ul>
+  </nav>
+
+  <!-- ============ 黃金 30 秒 ============ -->
+  <section id="golden">
+    <div class="section-head">
+      <span class="section-num">§ 01</span>
+      <h2>黃金 30 秒速記</h2>
+      <span class="section-note">進考場前默念三遍</span>
+    </div>
+
+    <div class="golden-box">
+      <div class="golden-label">★ THE 10 COMMANDMENTS ★</div>
+      <div class="golden-title">十大核心一句話</div>
+      <ul class="golden-list">
+        <li><strong>Transformer</strong> 是 LLM 核心</li>
+        <li><strong>RAG</strong> 是查資料再回答</li>
+        <li><strong>Agent</strong> 是會做事的 AI</li>
+        <li><strong>SHAP / LIME</strong> 是解釋 AI</li>
+        <li><strong>SMOTE</strong> 處理不平衡資料</li>
+        <li><strong>ReLU</strong> 是深度學習主流</li>
+        <li><strong>Softmax</strong> 多分類</li>
+        <li><strong>Sigmoid</strong> 二分類</li>
+        <li><strong>VAE / GAN</strong> 是生成模型</li>
+        <li><strong>ETL</strong> 是資料整理流程</li>
+      </ul>
+    </div>
+
+    <div class="memo">
+      <strong>核心心法：</strong>AI 不是只有模型，是「資料 → 特徵 → 推理 → Agent → 流程 → 自動化」的整條鏈！
+    </div>
+  </section>
+
+  <!-- ============ 翻牌 ============ -->
+  <section id="flip">
+    <div class="section-head">
+      <span class="section-num">§ 02</span>
+      <h2>必背 15 題翻牌速記</h2>
+      <span class="section-note">點一下看答案</span>
+    </div>
+
+    <p class="flip-hint">👆 點擊卡片翻面 · 先看題目猜答案再翻</p>
+
+    <div class="flip-grid" id="flipGrid">
+      <!-- JS 注入 -->
+    </div>
+  </section>
+
+  <!-- ============ 易混淆對照 ============ -->
+  <section id="confuse">
+    <div class="section-head">
+      <span class="section-num">§ 03</span>
+      <h2>最容易考錯的對照</h2>
+      <span class="section-note">紅色！注意！</span>
+    </div>
+
+    <div class="confuse-card">
+      <div class="confuse-side left">
+        <div class="confuse-name">Sigmoid</div>
+        <div class="confuse-key"><strong>用途：</strong>二分類</div>
+        <div class="confuse-key"><strong>輸出：</strong>0 ~ 1（單一機率）</div>
+        <div class="confuse-key"><strong>記憶：</strong>是 / 否、有 / 無</div>
+      </div>
+      <div class="confuse-vs">VS</div>
+      <div class="confuse-side">
+        <div class="confuse-name">Softmax</div>
+        <div class="confuse-key"><strong>用途：</strong>多分類</div>
+        <div class="confuse-key"><strong>輸出：</strong>多個機率（總和=1）</div>
+        <div class="confuse-key"><strong>記憶：</strong>A / B / C / D 選一個</div>
+      </div>
+    </div>
+
+    <div class="confuse-card">
+      <div class="confuse-side left">
+        <div class="confuse-name">L1 ／ Lasso</div>
+        <div class="confuse-key"><strong>效果：</strong>不重要特徵 → 0</div>
+        <div class="confuse-key"><strong>用途：</strong>Feature Selection</div>
+        <div class="confuse-key"><strong>關鍵字：</strong>Sparse、稀疏</div>
+      </div>
+      <div class="confuse-vs">VS</div>
+      <div class="confuse-side">
+        <div class="confuse-name">L2 ／ Ridge</div>
+        <div class="confuse-key"><strong>效果：</strong>權重縮小但 ≠ 0</div>
+        <div class="confuse-key"><strong>用途：</strong>降低過擬合</div>
+        <div class="confuse-key"><strong>關鍵字：</strong>平滑、Smooth</div>
+      </div>
+    </div>
+
+    <div class="confuse-card">
+      <div class="confuse-side left">
+        <div class="confuse-name">Precision</div>
+        <div class="confuse-key"><strong>意義：</strong>抓到的有多準</div>
+        <div class="confuse-key"><strong>關注：</strong>不亂抓（誤報少）</div>
+        <div class="confuse-key"><strong>場景：</strong>垃圾郵件、廣告推薦</div>
+      </div>
+      <div class="confuse-vs">VS</div>
+      <div class="confuse-side">
+        <div class="confuse-name">Recall</div>
+        <div class="confuse-key"><strong>意義：</strong>真答案有沒有漏抓</div>
+        <div class="confuse-key"><strong>關注：</strong>不漏抓（漏報少）</div>
+        <div class="confuse-key"><strong>場景：</strong>醫療診斷、Fraud</div>
+      </div>
+    </div>
+
+    <div class="confuse-card">
+      <div class="confuse-side left">
+        <div class="confuse-name">VAE</div>
+        <div class="confuse-key"><strong>結構：</strong>Encoder + Latent + Decoder</div>
+        <div class="confuse-key"><strong>原理：</strong>學分布來生成</div>
+        <div class="confuse-key"><strong>用途：</strong>異常檢測、壓縮、生成</div>
+      </div>
+      <div class="confuse-vs">VS</div>
+      <div class="confuse-side">
+        <div class="confuse-name">GAN</div>
+        <div class="confuse-key"><strong>結構：</strong>Generator + Discriminator</div>
+        <div class="confuse-key"><strong>原理：</strong>兩個 AI 對抗</div>
+        <div class="confuse-key"><strong>用途：</strong>AI 畫圖、Deepfake、超解析</div>
+      </div>
+    </div>
+
+    <div class="confuse-card">
+      <div class="confuse-side left">
+        <div class="confuse-name">BERT</div>
+        <div class="confuse-key"><strong>架構：</strong>Encoder-only</div>
+        <div class="confuse-key"><strong>強項：</strong>理解</div>
+        <div class="confuse-key"><strong>典型：</strong>分類、NER、QA</div>
+      </div>
+      <div class="confuse-vs">VS</div>
+      <div class="confuse-side">
+        <div class="confuse-name">GPT</div>
+        <div class="confuse-key"><strong>架構：</strong>Decoder-only</div>
+        <div class="confuse-key"><strong>強項：</strong>生成</div>
+        <div class="confuse-key"><strong>典型：</strong>聊天、創作、接龍</div>
+      </div>
+    </div>
+
+    <div class="memo">
+      ★ 看到「<strong>不漏抓</strong>」想 <strong>Recall</strong>，看到「<strong>不亂抓</strong>」想 <strong>Precision</strong>，兩個都要 → <strong>F1</strong>
+    </div>
+  </section>
+
+  <!-- ============ 激活函數 ============ -->
+  <section id="activation">
+    <div class="section-head">
+      <span class="section-num">§ 04</span>
+      <h2>激活函數速查表</h2>
+      <span class="section-note">超高頻必考</span>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>函數</th><th>輸出</th><th>用途</th><th>一句話記憶</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Sigmoid</strong></td><td>0 ~ 1</td><td>二分類</td><td><span class="highlight-text">二分類機率</span></td></tr>
+          <tr><td><strong>Softmax</strong></td><td>機率總和=1</td><td>多分類</td><td><span class="highlight-text">多分類機率</span></td></tr>
+          <tr><td><strong>ReLU</strong></td><td>負數→0、正數保留</td><td>深度學習隱藏層</td><td><span class="highlight-text">最常用 ‧ 不易梯度消失</span></td></tr>
+          <tr><td><strong>Linear</strong></td><td>線性</td><td>回歸</td><td>連續數值預測</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ 評估指標 ============ -->
+  <section id="metrics">
+    <div class="section-head">
+      <span class="section-num">§ 05</span>
+      <h2>模型評估指標</h2>
+      <span class="section-note">分類 + 回歸</span>
+    </div>
+
+    <h3>分類問題</h3>
+    <div class="quick-grid">
+      <div class="quick-item">
+        <div class="q-name">Accuracy</div>
+        <div class="q-desc">整體正確率 ‧ 資料平衡才有意義</div>
+      </div>
+      <div class="quick-item">
+        <div class="q-name">Precision</div>
+        <div class="q-desc">不亂抓 ‧ 抓的準不準</div>
+      </div>
+      <div class="quick-item">
+        <div class="q-name">Recall</div>
+        <div class="q-desc">不漏抓 ‧ 真答案抓到幾個</div>
+      </div>
+      <div class="quick-item">
+        <div class="q-name">F1-score</div>
+        <div class="q-desc">Precision + Recall 平衡</div>
+      </div>
+      <div class="quick-item blue">
+        <div class="q-name">AUC</div>
+        <div class="q-desc">分類能力 ‧ 越接近 1 越好</div>
+      </div>
+    </div>
+
+    <h3>回歸問題</h3>
+    <div class="quick-grid">
+      <div class="quick-item green">
+        <div class="q-name">RMSE</div>
+        <div class="q-desc">預測誤差大小 ‧ 越小越好</div>
+      </div>
+      <div class="quick-item green">
+        <div class="q-name">MAE</div>
+        <div class="q-desc">平均絕對誤差 ‧ 抗離群值</div>
+      </div>
+    </div>
+
+    <div class="memo">
+      <strong>選錯指標害死你 →</strong> 不平衡資料絕對不能只看 Accuracy！要看 F1 / Recall！
+    </div>
+  </section>
+
+  <!-- ============ 架構對比 ============ -->
+  <section id="arch">
+    <div class="section-head">
+      <span class="section-num">§ 06</span>
+      <h2>四大模型架構對比</h2>
+      <span class="section-note">看到題目秒選</span>
+    </div>
+
+    <div class="compare-grid">
+      <div class="compare-card">
+        <div class="compare-tag">VISION</div>
+        <div class="compare-title">CNN</div>
+        <div class="compare-desc">卷積神經網路 ‧ 看圖片專家</div>
+        <ul class="compare-list">
+          <li>OCR 文字辨識</li>
+          <li>工業品檢</li>
+          <li>醫療影像</li>
+          <li>人臉辨識</li>
+        </ul>
+      </div>
+
+      <div class="compare-card">
+        <div class="compare-tag">SEQUENCE</div>
+        <div class="compare-title">RNN</div>
+        <div class="compare-desc">循環神經網路 ‧ 處理序列</div>
+        <ul class="compare-list">
+          <li>NLP 自然語言</li>
+          <li>語音辨識</li>
+          <li>時序預測</li>
+          <li>股價、天氣</li>
+        </ul>
+      </div>
+
+      <div class="compare-card red-accent">
+        <div class="compare-tag">LLM CORE</div>
+        <div class="compare-title">Transformer</div>
+        <div class="compare-desc">Attention 架構 ‧ 現代 LLM 核心</div>
+        <ul class="compare-list">
+          <li>Self-Attention</li>
+          <li>Parallel Processing</li>
+          <li>GPT / Claude / Gemini</li>
+          <li>看到 ChatGPT → 想 Transformer</li>
+        </ul>
+      </div>
+
+      <div class="compare-card">
+        <div class="compare-tag">GENERATIVE</div>
+        <div class="compare-title">GAN</div>
+        <div class="compare-desc">對抗生成 ‧ AI 畫圖</div>
+        <ul class="compare-list">
+          <li>圖像生成</li>
+          <li>Deepfake</li>
+          <li>超解析度</li>
+          <li>Generator + Discriminator</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Agent / RAG ============ -->
+  <section id="agent">
+    <div class="section-head">
+      <span class="section-num">§ 07</span>
+      <h2>Agent 與 RAG 全圖</h2>
+      <span class="section-note">2025 必考新題</span>
+    </div>
+
+    <h3>RAG 三步驟</h3>
+    <div class="quick-grid">
+      <div class="quick-item">
+        <div class="q-name">① Retrieval 檢索</div>
+        <div class="q-desc">從向量資料庫找相關內容</div>
+      </div>
+      <div class="quick-item">
+        <div class="q-name">② Augmented 增強</div>
+        <div class="q-desc">把檢索結果塞進 Prompt</div>
+      </div>
+      <div class="quick-item">
+        <div class="q-name">③ Generation 生成</div>
+        <div class="q-desc">LLM 根據增強內容回答</div>
+      </div>
+    </div>
+
+    <h3>RAG 相關名詞</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>名詞</th><th>核心</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Embedding</strong></td><td>文字 → 向量（讓電腦懂語意）</td></tr>
+          <tr><td><strong>Vector Database</strong></td><td>儲存向量做語意搜尋</td></tr>
+          <tr><td><strong>Chunking</strong></td><td>長文件切成小塊才能檢索</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Agent 四大能力</h3>
+    <div class="quick-grid">
+      <div class="quick-item blue">
+        <div class="q-name">Planning</div>
+        <div class="q-desc">規劃任務步驟</div>
+      </div>
+      <div class="quick-item blue">
+        <div class="q-name">Tool Calling</div>
+        <div class="q-desc">呼叫工具執行</div>
+      </div>
+      <div class="quick-item blue">
+        <div class="q-name">Memory</div>
+        <div class="q-desc">記憶對話歷史</div>
+      </div>
+      <div class="quick-item blue">
+        <div class="q-name">Workflow</div>
+        <div class="q-desc">完整流程自動化</div>
+      </div>
+    </div>
+
+    <div class="memo">
+      <strong>Agentic AI 流程 →</strong> 理解 → 規劃 → 執行 → 修正 ‧ 不只回答，還會「做事」
+    </div>
+
+    <h3>Agent 類型</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>類型</th><th>核心</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Client Agent</strong></td><td>本地端執行</td></tr>
+          <tr><td><strong>Remote Agent</strong></td><td>雲端執行</td></tr>
+          <tr><td><strong>Multi-Agent</strong></td><td>多 Agent 協作</td></tr>
+          <tr><td><strong>Context-aware</strong></td><td>依情境調整行為</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ Prompt / 微調 ============ -->
+  <section id="prompt">
+    <div class="section-head">
+      <span class="section-num">§ 08</span>
+      <h2>Prompt ／ Fine-tuning</h2>
+      <span class="section-note">操作型題目</span>
+    </div>
+
+    <h3>Prompt Engineering</h3>
+    <div class="quick-grid">
+      <div class="quick-item">
+        <div class="q-name">Chain of Thought</div>
+        <div class="q-desc">讓 AI 一步一步推理（CoT）</div>
+      </div>
+      <div class="quick-item">
+        <div class="q-name">Self-Consistency</div>
+        <div class="q-desc">多次推理後投票決定</div>
+      </div>
+      <div class="quick-item orange">
+        <div class="q-name">Prompt Injection</div>
+        <div class="q-desc">⚠️ 用惡意 Prompt 攻擊 AI</div>
+      </div>
+      <div class="quick-item">
+        <div class="q-name">Temperature</div>
+        <div class="q-desc">低=穩定 / 高=創意</div>
+      </div>
+    </div>
+
+    <h3>微調技術</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>技術</th><th>核心</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Fine-tuning</strong></td><td>用特定資料微調整個模型</td></tr>
+          <tr><td><strong>PEFT</strong></td><td>用「少量」參數微調大模型（省資源）</td></tr>
+          <tr><td><strong>Knowledge Distillation</strong></td><td>大模型「教」小模型</td></tr>
+          <tr><td><strong>RFT / RLHF</strong></td><td>用獎勵機制微調（人類回饋）</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ 資料工程 ============ -->
+  <section id="data">
+    <div class="section-head">
+      <span class="section-num">§ 09</span>
+      <h2>資料工程 ／ Big Data</h2>
+      <span class="section-note">基礎題</span>
+    </div>
+
+    <h3>Big Data 4V</h3>
+    <div class="quick-grid">
+      <div class="quick-item">
+        <div class="q-name">Volume 量</div>
+        <div class="q-desc">資料很多</div>
+      </div>
+      <div class="quick-item">
+        <div class="q-name">Velocity 速</div>
+        <div class="q-desc">資料很快</div>
+      </div>
+      <div class="quick-item">
+        <div class="q-name">Variety 多樣</div>
+        <div class="q-desc">資料很多種類</div>
+      </div>
+      <div class="quick-item">
+        <div class="q-name">Veracity 真</div>
+        <div class="q-desc">資料是否可信</div>
+      </div>
+    </div>
+
+    <h3>ETL 流程</h3>
+    <div class="memo">
+      <strong>ETL =</strong> Extract（抓） → Transform（整理） → Load（載入）
+    </div>
+
+    <h3>特徵工程</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>方法</th><th>用途</th></tr></thead>
+        <tbody>
+          <tr><td><strong>One-hot Encoding</strong></td><td>類別 → 0/1（避免大小誤解）</td></tr>
+          <tr><td><strong>Label Encoding</strong></td><td>類別 → 數字</td></tr>
+          <tr><td><strong>Normalization</strong></td><td>特徵縮放到固定範圍</td></tr>
+          <tr><td><strong>Standardization</strong></td><td>標準化（平均=0、變異=1）</td></tr>
+          <tr><td><strong>Log Transform</strong></td><td>修正偏態、降低極端值</td></tr>
+          <tr><td><strong>PCA</strong></td><td>降維</td></tr>
+          <tr><td><strong>SMOTE</strong></td><td><span class="highlight-text">處理不平衡（人工生成少數類別）</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Data Drift 三類</h3>
+    <div class="quick-grid">
+      <div class="quick-item orange">
+        <div class="q-name">Covariate Drift</div>
+        <div class="q-desc">輸入特徵分布變了</div>
+      </div>
+      <div class="quick-item orange">
+        <div class="q-name">Concept Drift</div>
+        <div class="q-desc">輸入 → 輸出關係變了</div>
+      </div>
+      <div class="quick-item orange">
+        <div class="q-name">Prior Probability Drift</div>
+        <div class="q-desc">類別比例變了</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ XAI ============ -->
+  <section id="xai">
+    <div class="section-head">
+      <span class="section-num">§ 10</span>
+      <h2>XAI 可解釋 AI</h2>
+      <span class="section-note">熱門新題型</span>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>方法</th><th>解釋範圍</th><th>核心</th></tr></thead>
+        <tbody>
+          <tr><td><strong>LIME</strong></td><td>Local（單次）</td><td>解釋單次預測 ‧ 模型無關</td></tr>
+          <tr><td><strong>SHAP</strong></td><td>Local + Global</td><td>各特徵貢獻 ‧ Shapley Value</td></tr>
+          <tr><td><strong>Counterfactual</strong></td><td>Local</td><td>「改什麼結果會不同」</td></tr>
+          <tr><td><strong>Saliency Map</strong></td><td>Image</td><td>AI 看圖片最重視哪裡</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="memo">
+      看到「<strong>單次預測</strong>」想 <strong>LIME</strong>，看到「<strong>特徵貢獻</strong>」想 <strong>SHAP</strong>，看到「<strong>圖片熱區</strong>」想 <strong>Saliency Map</strong>
+    </div>
+  </section>
+
+  <!-- ============ AI 安全 ============ -->
+  <section id="safety">
+    <div class="section-head">
+      <span class="section-num">§ 11</span>
+      <h2>AI 安全與治理</h2>
+      <span class="section-note">送分題</span>
+    </div>
+
+    <div class="quick-grid">
+      <div class="quick-item">
+        <div class="q-name">DLP</div>
+        <div class="q-desc">Data Loss Prevention ‧ 防資料外洩</div>
+      </div>
+      <div class="quick-item">
+        <div class="q-name">Bias Detection</div>
+        <div class="q-desc">偵測偏見</div>
+      </div>
+      <div class="quick-item">
+        <div class="q-name">Bias Mitigation</div>
+        <div class="q-desc">修正偏見</div>
+      </div>
+      <div class="quick-item">
+        <div class="q-name">Differential Privacy</div>
+        <div class="q-desc">差分隱私 ‧ 保護個資</div>
+      </div>
+      <div class="quick-item">
+        <div class="q-name">EO（Equal Opportunity）</div>
+        <div class="q-desc">AI 公平性</div>
+      </div>
+      <div class="quick-item">
+        <div class="q-name">Benchmark</div>
+        <div class="q-desc">MMLU / GSM8K / HumanEval</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 最後一句 ============ -->
+  <section id="final">
+    <div class="section-head">
+      <span class="section-num">§ 12</span>
+      <h2>最後一句話</h2>
+      <span class="section-note">送你進考場</span>
+    </div>
+
+    <div class="golden-box">
+      <div class="golden-label">★ ONE LAST THING ★</div>
+      <div class="golden-title" style="font-size: 32px; line-height: 1.3;">
+        AI 的核心不是只有模型，<br>
+        而是「<span style="color:var(--yellow);">資料 ‧ 特徵 ‧ 推理 ‧ Agent ‧ 流程 ‧ 自動化</span>」<br>
+        <span style="font-size:20px; font-weight:500; opacity:0.85;">整條鏈缺一不可。</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="footer-stamp">GOOD LUCK</div>
+    <div class="footer-msg">
+      你已經準備好了。<br>
+      深呼吸 ‧ 看題目 ‧ 選最直覺答案。
+    </div>
+    <div class="footer-sign">EXAM SPRINT NOTEBOOK · 便當仔 · 2026</div>
+  </footer>
+
+</div>
+
+<script>
+  // 翻牌資料
+  const flipCards = [
+    { q: 'ChatGPT 核心架構？', a: 'Transformer' },
+    { q: '圖片辨識最常用？', a: 'CNN' },
+    { q: '時序資料處理？', a: 'RNN' },
+    { q: 'AI 畫圖／Deepfake？', a: 'GAN' },
+    { q: '多分類用哪個函數？', a: 'Softmax' },
+    { q: '二分類用哪個函數？', a: 'Sigmoid' },
+    { q: '深度學習隱藏層主流？', a: 'ReLU' },
+    { q: 'AI 解釋工具？', a: 'SHAP / LIME' },
+    { q: 'AI 查資料再回答？', a: 'RAG' },
+    { q: '儲存向量做語意搜尋？', a: 'Vector DB' },
+    { q: '類別資料怎麼編碼？', a: 'One-hot Encoding' },
+    { q: '過擬合怎麼解？', a: 'Regularization' },
+    { q: '少數類別生成？', a: 'SMOTE' },
+    { q: 'AI 主動做事？', a: 'Agentic AI' },
+    { q: 'AI 標準考試？', a: 'Benchmark' }
+  ];
+
+  const grid = document.getElementById('flipGrid');
+  flipCards.forEach((c, i) => {
+    const card = document.createElement('div');
+    card.className = 'flip-card';
+    card.innerHTML = `
+      <div class="flip-inner">
+        <div class="flip-front">
+          <span class="flip-num">Q${String(i+1).padStart(2,'0')}</span>
+          <div class="flip-q">${c.q}</div>
+        </div>
+        <div class="flip-back">
+          <span class="flip-num">A${String(i+1).padStart(2,'0')}</span>
+          <div class="flip-a">${c.a}</div>
+        </div>
+      </div>
+    `;
+    card.addEventListener('click', () => card.classList.toggle('flipped'));
+    grid.appendChild(card);
+  });
+</script>
+</body>
+</html>
